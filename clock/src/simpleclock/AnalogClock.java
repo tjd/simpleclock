@@ -1,9 +1,8 @@
 package simpleclock;
 
-import processing.core.PApplet;
 import processing.core.PFont;
 
-public class AnalogClock extends PApplet {
+public class AnalogClock extends MyPApplet {
 
 	// second hand moves 1/60th of the way around the clock each tick
 	public final float TICK_AMOUNT = 2 * PI / 60f;
