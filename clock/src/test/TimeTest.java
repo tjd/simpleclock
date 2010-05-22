@@ -1,4 +1,4 @@
-package simpleclock;
+package test;
 
 import processing.core.PApplet;
 

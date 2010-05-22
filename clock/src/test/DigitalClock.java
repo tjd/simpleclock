@@ -1,4 +1,4 @@
-package simpleclock;
+package test;
 
 import java.util.Date;
 

@@ -11,6 +11,10 @@ public class AnalogClock extends MyPApplet {
 	public float angleOfMinHand;
 	public float angleOfHourHand;
 
+	public ClockHand secondsHand;
+	public ClockHand minutesHand;
+	public ClockHand hoursHand;
+	
 	public PFont font;
 
 	public void setup() {
