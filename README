@@ -1,0 +1,7 @@
+simpleclock is a hobby project that uses Java and the Processing library
+to create a graphical analog clock. It started as a small project for
+an introductory Java programming course, but quickly became more complex 
+than most beginners can handle. Initially, it was written in a straightforward
+procedural-style that Processing encourages, but it is natural to make it
+more object-oriented.
+
