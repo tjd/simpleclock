@@ -2,9 +2,13 @@ package simpleclock;
 
 import java.awt.Color;
 
-//import processing.core.PApplet;
+/*
+ * Represents one hand of a clock. Optionally, an arrow can be drawn on
+ * the end of the hand.
+ * 
+ */
 
-public class ClockHand {
+public class Hand {
 	private MyPApplet app;
 	private int length;
 	private int weight;
@@ -12,7 +16,7 @@ public class ClockHand {
 	private boolean hasArrow;
 	private float angle;
 
-	public ClockHand(MyPApplet app, int length, int weight, Color color,
+	public Hand(MyPApplet app, int length, int weight, Color color,
 			boolean hasArrow) {
 		this.app = app;
 		this.length = length;
@@ -35,10 +39,6 @@ public class ClockHand {
 			// triangle(-5, -height / 4, 5, -height / 4, 0, -height / 4 - 10);
 		}
 		app.popAll();
-	}
-
-	public float getAngle() {
-		return angle;
 	}
 
 	public void setAngle(float angle) {

@@ -1,8 +1,13 @@
 package simpleclock;
 
 import java.awt.Color;
-
 import processing.core.PApplet;
+
+/*
+ * Has a few helper methods to PApplet. For instance, methods are added to accept Java Color
+ * objects.
+ * 
+ */
 
 public class MyPApplet extends PApplet {
 

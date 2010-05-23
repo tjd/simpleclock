@@ -1,7 +1,5 @@
 package test;
 
-import java.util.Date;
-
 import processing.core.PApplet;
 import processing.core.PFont;
 

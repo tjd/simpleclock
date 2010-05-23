@@ -6,16 +6,13 @@ import processing.core.PFont;
 
 public class AnalogClock extends MyPApplet {
 
-	// second hand moves 1/60th of the way around the clock each tick
-	public final float TICK_AMOUNT = 2 * PI / 60f;
-
-	public ClockHand secondsHand;
-	public ClockHand minutesHand;
-	public ClockHand hoursHand;
+	public Hand secondsHand;
+	public Hand minutesHand;
+	public Hand hoursHand;
 
 	public Tick minuteTick;
 	public Tick hourTick;
-	
+
 	public SimpleTime time;
 
 	public PFont font;
@@ -27,9 +24,9 @@ public class AnalogClock extends MyPApplet {
 		smooth();
 
 		// create the hands
-		secondsHand = new ClockHand(this, 130, 1, Color.RED, false);
-		minutesHand = new ClockHand(this, 110, 3, Color.BLUE, false);
-		hoursHand = new ClockHand(this, 80, 3, Color.GREEN, false);
+		secondsHand = new Hand(this, 130, 1, Color.RED, false);
+		minutesHand = new Hand(this, 110, 3, Color.BLUE, false);
+		hoursHand = new Hand(this, 80, 3, Color.GREEN, false);
 
 		// create the tick marks
 		minuteTick = new Tick(this, 5, 150, 1, Color.BLACK);
@@ -37,7 +34,7 @@ public class AnalogClock extends MyPApplet {
 
 		// initialize the time
 		time = new SimpleTime(this);
-		
+
 		// create the numbers font
 		font = createFont("Arial", 20);
 		textFont(font);
@@ -49,7 +46,7 @@ public class AnalogClock extends MyPApplet {
 		translate(width / 2, height / 2);
 
 		time.updateToNow();
-		
+
 		drawSecondsHand(time);
 		drawMinutesHand(time);
 		drawHoursHand(time);

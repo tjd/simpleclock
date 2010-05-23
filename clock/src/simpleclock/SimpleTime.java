@@ -1,5 +1,10 @@
 package simpleclock;
 
+/*
+ * Represents a (seconds, minutes, hours) triple.
+ * 
+ */
+
 public class SimpleTime {
 	private MyPApplet app;
 	public int s, m, h;
@@ -19,13 +24,13 @@ public class SimpleTime {
 	public void updateToNow() {
 		setTime(app.hour(), app.minute(), app.second());
 	}
-	
+
 	public void setTime(int h, int m, int s) {
 		this.s = s;
 		this.m = m;
 		this.h = h;
-		if (h >= 12) 
+		if (h >= 12) {
 			h -= 12;
-		
+		}
 	}
 }

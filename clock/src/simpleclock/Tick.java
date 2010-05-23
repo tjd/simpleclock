@@ -2,6 +2,11 @@ package simpleclock;
 
 import java.awt.Color;
 
+/*
+ * A Tick is the small line segment around the edge of clock face.
+ * 
+ */
+
 public class Tick {
 
 	private MyPApplet app;
