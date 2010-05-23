@@ -24,7 +24,7 @@ public class ClockHand {
 		app.pushStyle();
 		app.strokeWeight(weight);
 		app.stroke(color);
-		app.line(0, 0, 0, length);
+		app.line(0, 0, 0, -length);
 		if (hasArrow) {
 			app.triangle(-5, length, 5, length, 0, 10);
 			// triangle(-5, -height / 4, 5, -height / 4, 0, -height / 4 - 10);

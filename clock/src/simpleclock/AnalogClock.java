@@ -1,5 +1,7 @@
 package simpleclock;
 
+import java.awt.Color;
+
 import processing.core.PFont;
 
 public class AnalogClock extends MyPApplet {
@@ -14,7 +16,7 @@ public class AnalogClock extends MyPApplet {
 	public ClockHand secondsHand;
 	public ClockHand minutesHand;
 	public ClockHand hoursHand;
-	
+
 	public PFont font;
 
 	public void setup() {
@@ -23,6 +25,9 @@ public class AnalogClock extends MyPApplet {
 		fill(0, 0, 255);
 		smooth();
 
+		secondsHand = new ClockHand(this, 130, 1, Color.RED, false);
+		minutesHand = new ClockHand(this, 110, 3, Color.BLUE, false);
+		hoursHand = new ClockHand(this, 80, 3, Color.GREEN, false);
 		font = createFont("Arial", 20);
 		textFont(font);
 	}
@@ -77,7 +82,7 @@ public class AnalogClock extends MyPApplet {
 			String num = "" + (i + 1);
 			translate(-textWidth(num) / 2, -120);
 			pushMatrix();
-			//rotate(-i * 2 * PI / 12 - 2 * PI / 12);
+			// rotate(-i * 2 * PI / 12 - 2 * PI / 12);
 			text(num, 0, 0);
 			popMatrix();
 			popMatrix();
@@ -100,8 +105,9 @@ public class AnalogClock extends MyPApplet {
 		rotate(angleOfHourHand);
 
 		// draw the arrow
-		line(0, -height / 6, 0, 30);
-		triangle(-5, -height / 6, 5, -height / 6, 0, -height / 6 - 10);
+		hoursHand.draw();
+//		line(0, -height / 6, 0, 30);
+//		triangle(-5, -height / 6, 5, -height / 6, 0, -height / 6 - 10);
 		popMatrix();
 	}
 
@@ -116,8 +122,9 @@ public class AnalogClock extends MyPApplet {
 		rotate(angleOfMinHand);
 
 		// draw the arrow
-		line(0, -height / 4, 0, 40);
-		triangle(-5, -height / 4, 5, -height / 4, 0, -height / 4 - 10);
+		minutesHand.draw();
+//		line(0, -height / 4, 0, 40);
+//		triangle(-5, -height / 4, 5, -height / 4, 0, -height / 4 - 10);
 		popMatrix();
 	}
 
@@ -132,7 +139,8 @@ public class AnalogClock extends MyPApplet {
 		rotate(angleOfSecHand);
 
 		// draw the hand
-		line(0, -height / 3, 0, 10);
+		secondsHand.draw();
+//		line(0, -height / 3, 0, 10);
 		// triangle(-5, -height / 4, 5, -height / 4, 0, -height / 4 - 10);
 		popMatrix();
 	}
