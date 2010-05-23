@@ -10,8 +10,8 @@ public class AnalogClock extends MyPApplet {
 	public Hand minutesHand;
 	public Hand hoursHand;
 
-	public Tick minuteTick;
-	public Tick hourTick;
+	public TickMark minuteTick;
+	public TickMark hourTick;
 
 	public SimpleTime time;
 
@@ -29,8 +29,8 @@ public class AnalogClock extends MyPApplet {
 		hoursHand = new Hand(this, 80, 3, Color.GREEN, false);
 
 		// create the tick marks
-		minuteTick = new Tick(this, 5, 150, 1, Color.BLACK);
-		hourTick = new Tick(this, 10, 150, 3, Color.BLACK);
+		minuteTick = new TickMark(this, 5, 150, 1, Color.BLACK);
+		hourTick = new TickMark(this, 10, 150, 3, Color.BLACK);
 
 		// initialize the time
 		time = new SimpleTime(this);
