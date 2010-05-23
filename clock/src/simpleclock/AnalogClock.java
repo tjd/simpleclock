@@ -15,6 +15,8 @@ public class AnalogClock extends MyPApplet {
 
 	public Tick minuteTick;
 	public Tick hourTick;
+	
+	public SimpleTime time;
 
 	public PFont font;
 
@@ -33,6 +35,9 @@ public class AnalogClock extends MyPApplet {
 		minuteTick = new Tick(this, 5, 150, 1, Color.BLACK);
 		hourTick = new Tick(this, 10, 150, 3, Color.BLACK);
 
+		// initialize the time
+		time = new SimpleTime(this);
+		
 		// create the numbers font
 		font = createFont("Arial", 20);
 		textFont(font);
@@ -43,12 +48,11 @@ public class AnalogClock extends MyPApplet {
 
 		translate(width / 2, height / 2);
 
-		int s = second();
-		int m = minute();
-		int h = hour();
-		drawSecondsHand(s);
-		drawMinutesHand(m, s);
-		drawHoursHand(h);
+		time.updateToNow();
+		
+		drawSecondsHand(time);
+		drawMinutesHand(time);
+		drawHoursHand(time);
 
 		drawClockFace();
 	}
@@ -92,23 +96,20 @@ public class AnalogClock extends MyPApplet {
 		popMatrix();
 	}
 
-	private void drawHoursHand(int h) {
-		if (h >= 12) {
-			h -= 12;
-		}
-		float angle = (2 * PI / 12) * (h + minute() / 60f);
+	private void drawHoursHand(SimpleTime t) {
+		float angle = (2 * PI / 12) * (t.h + t.m / 60f);
 		hoursHand.setAngle(angle);
 		hoursHand.draw();
 	}
 
-	private void drawMinutesHand(int m, int s) {
-		float angle = (2 * PI / 60f) * (m + s / 60f);
+	private void drawMinutesHand(SimpleTime t) {
+		float angle = (2 * PI / 60f) * (t.m + t.s / 60f);
 		minutesHand.setAngle(angle);
 		minutesHand.draw();
 	}
 
-	private void drawSecondsHand(int s) {
-		float angle = s * 2 * PI / 60;
+	private void drawSecondsHand(SimpleTime t) {
+		float angle = t.s * 2 * PI / 60;
 		secondsHand.setAngle(angle);
 		secondsHand.draw();
 	}
