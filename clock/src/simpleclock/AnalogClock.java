@@ -9,12 +9,8 @@ public class AnalogClock extends MyPApplet {
 	public Hand secondsHand;
 	public Hand minutesHand;
 	public Hand hoursHand;
-
-//	public TickMark minuteTick;
-//	public TickMark hourTick;
-
 	public Face face;
-	
+
 	public SimpleTime time;
 
 	public PFont font;
@@ -31,6 +27,8 @@ public class AnalogClock extends MyPApplet {
 		hoursHand = new Hand(this, 80, 3, Color.GREEN, false);
 
 		face = new Face(this);
+		// face.hideNumbers();
+		// face.hideMinuteTickMarks();
 
 		// initialize the time
 		time = new SimpleTime(this);
@@ -49,7 +47,7 @@ public class AnalogClock extends MyPApplet {
 		face.draw();
 		drawSecondsHand(time);
 		drawMinutesHand(time);
-		drawHoursHand(time);		
+		drawHoursHand(time);
 	}
 
 	private void drawHoursHand(SimpleTime t) {

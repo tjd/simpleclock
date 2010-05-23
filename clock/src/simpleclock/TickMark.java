@@ -15,7 +15,8 @@ public class TickMark {
 	private int height;
 	private Color color;
 
-	public TickMark(MyPApplet app, int length, int height, int weight, Color color) {
+	public TickMark(MyPApplet app, int length, int height, int weight,
+			Color color) {
 		this.app = app;
 		this.length = length;
 		this.weight = weight;
