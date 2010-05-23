@@ -29,12 +29,12 @@ public class MyPApplet extends PApplet {
 	public void circle(float diam) {
 		circle(0, 0, diam);
 	}
-	
+
 	public void pushAll() {
 		pushMatrix();
 		pushStyle();
 	}
-	
+
 	public void popAll() {
 		popStyle();
 		popMatrix();

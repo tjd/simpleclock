@@ -28,7 +28,7 @@ public class ClockHand {
 		app.stroke(color);
 		app.rotate(angle);
 		app.line(0, 0, 0, -length);
-		
+
 		// TODO: fix the arrow
 		if (hasArrow) {
 			app.triangle(-5, length, 5, length, 0, 10);

@@ -12,16 +12,16 @@ public class AnalogClock extends MyPApplet {
 	public ClockHand secondsHand;
 	public ClockHand minutesHand;
 	public ClockHand hoursHand;
-	
+
 	public Tick minuteTick;
-	public Tick hourTick;	
+	public Tick hourTick;
 
 	public PFont font;
 
 	public void setup() {
 		size(400, 400);
-		stroke(0, 0, 255);
-		fill(0, 0, 255);
+		stroke(Color.BLUE);
+		fill(Color.BLUE);
 		smooth();
 
 		// create the hands
@@ -32,7 +32,7 @@ public class AnalogClock extends MyPApplet {
 		// create the tick marks
 		minuteTick = new Tick(this, 5, 150, 1, Color.BLACK);
 		hourTick = new Tick(this, 10, 150, 3, Color.BLACK);
-		
+
 		// create the numbers font
 		font = createFont("Arial", 20);
 		textFont(font);
@@ -43,9 +43,12 @@ public class AnalogClock extends MyPApplet {
 
 		translate(width / 2, height / 2);
 
-		drawSecondsHand();
-		drawMinutesHand();
-		drawHoursHand();
+		int s = second();
+		int m = minute();
+		int h = hour();
+		drawSecondsHand(s);
+		drawMinutesHand(m, s);
+		drawHoursHand(h);
 
 		drawClockFace();
 	}
@@ -55,16 +58,16 @@ public class AnalogClock extends MyPApplet {
 		noFill();
 		stroke(128);
 		strokeWeight(3);
-		circle(0, 0, 300);
+		circle(300);
 		fill(Color.BLACK);
-		circle(0, 0, 3);
+		circle(3);
 
 		// ticks for seconds/minutes
 		for (int i = 0; i < 60; ++i) {
 			minuteTick.draw(i * 2 * PI / 60);
 		}
 
-		// ticks for hours		
+		// ticks for hours
 		for (int i = 0; i < 12; ++i) {
 			hourTick.draw(i * 2 * PI / 12);
 		}
@@ -77,7 +80,7 @@ public class AnalogClock extends MyPApplet {
 		fill(Color.BLACK);
 		for (int i = 0; i < 12; ++i) {
 			pushMatrix();
-			rotate((i+1) * 2 * PI / 12);
+			rotate((i + 1) * 2 * PI / 12);
 			String num = "" + (i + 1);
 			translate(-textWidth(num) / 2, -120);
 			pushMatrix();
@@ -89,8 +92,7 @@ public class AnalogClock extends MyPApplet {
 		popMatrix();
 	}
 
-	private void drawHoursHand() {
-		int h = hour();
+	private void drawHoursHand(int h) {
 		if (h >= 12) {
 			h -= 12;
 		}
@@ -99,14 +101,14 @@ public class AnalogClock extends MyPApplet {
 		hoursHand.draw();
 	}
 
-	private void drawMinutesHand() {
-		float angle = (2 * PI / 60f) * (minute() + second() / 60f);
+	private void drawMinutesHand(int m, int s) {
+		float angle = (2 * PI / 60f) * (m + s / 60f);
 		minutesHand.setAngle(angle);
 		minutesHand.draw();
 	}
 
-	private void drawSecondsHand() {
-		float angle = second() * 2 * PI / 60;
+	private void drawSecondsHand(int s) {
+		float angle = s * 2 * PI / 60;
 		secondsHand.setAngle(angle);
 		secondsHand.draw();
 	}
