@@ -15,6 +15,7 @@ public class Hand {
 	private Color color;
 	private boolean hasArrow;
 	private float angle;
+	private boolean hidden;
 
 	public Hand(MyPApplet app, int length, int weight, Color color,
 			boolean hasArrow) {
@@ -24,25 +25,39 @@ public class Hand {
 		this.color = color;
 		this.hasArrow = hasArrow;
 		this.angle = 0;
+		this.hidden = false;
 	}
 
 	public void draw() {
-		app.pushAll();
-		app.strokeWeight(weight);
-		app.stroke(color);
-		app.rotate(angle);
-		app.line(0, 0, 0, -length);
+		if (hidden) {
+			return;
+		} else {
+			app.pushAll();
+			app.strokeWeight(weight);
+			app.stroke(color);
+			app.rotate(angle);
+			app.line(0, 0, 0, -length);
 
-		// TODO: fix the arrow
-		if (hasArrow) {
-			app.triangle(-5, length, 5, length, 0, 10);
-			// triangle(-5, -height / 4, 5, -height / 4, 0, -height / 4 - 10);
+			// TODO: fix the arrow
+			if (hasArrow) {
+				app.triangle(-5, length, 5, length, 0, 10);
+				// triangle(-5, -height / 4, 5, -height / 4, 0, -height / 4 -
+				// 10);
+			}
+			app.popAll();
 		}
-		app.popAll();
 	}
 
 	public void setAngle(float angle) {
 		this.angle = angle;
+	}
+
+	public void hide() {
+		hidden = true;
+	}
+
+	public void unhide() {
+		hidden = false;
 	}
 
 }

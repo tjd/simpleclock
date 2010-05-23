@@ -1,7 +1,7 @@
 package simpleclock;
 
 /*
- * Represents a (seconds, minutes, hours) triple.
+ * Represents time as a (seconds, minutes, hours) triple.
  * 
  */
 

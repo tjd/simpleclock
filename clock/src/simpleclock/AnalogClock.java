@@ -10,9 +10,11 @@ public class AnalogClock extends MyPApplet {
 	public Hand minutesHand;
 	public Hand hoursHand;
 
-	public TickMark minuteTick;
-	public TickMark hourTick;
+//	public TickMark minuteTick;
+//	public TickMark hourTick;
 
+	public Face face;
+	
 	public SimpleTime time;
 
 	public PFont font;
@@ -28,9 +30,7 @@ public class AnalogClock extends MyPApplet {
 		minutesHand = new Hand(this, 110, 3, Color.BLUE, false);
 		hoursHand = new Hand(this, 80, 3, Color.GREEN, false);
 
-		// create the tick marks
-		minuteTick = new TickMark(this, 5, 150, 1, Color.BLACK);
-		hourTick = new TickMark(this, 10, 150, 3, Color.BLACK);
+		face = new Face(this);
 
 		// initialize the time
 		time = new SimpleTime(this);
@@ -46,51 +46,10 @@ public class AnalogClock extends MyPApplet {
 		translate(width / 2, height / 2);
 
 		time.updateToNow();
-
+		face.draw();
 		drawSecondsHand(time);
 		drawMinutesHand(time);
-		drawHoursHand(time);
-
-		drawClockFace();
-	}
-
-	private void drawClockFace() {
-		pushMatrix();
-		noFill();
-		stroke(128);
-		strokeWeight(3);
-		circle(300);
-		fill(Color.BLACK);
-		circle(3);
-
-		// ticks for seconds/minutes
-		for (int i = 0; i < 60; ++i) {
-			minuteTick.draw(i * 2 * PI / 60);
-		}
-
-		// ticks for hours
-		for (int i = 0; i < 12; ++i) {
-			hourTick.draw(i * 2 * PI / 12);
-		}
-
-		// TODO: fix the position of the numbers
-		// When the commented-out rotation line below is uncommented,
-		// the orientation is okay, but position is off. Position each
-		// number by hand?
-		// draw numbers
-		fill(Color.BLACK);
-		for (int i = 0; i < 12; ++i) {
-			pushMatrix();
-			rotate((i + 1) * 2 * PI / 12);
-			String num = "" + (i + 1);
-			translate(-textWidth(num) / 2, -120);
-			pushMatrix();
-			// rotate(-i * 2 * PI / 12 - 2 * PI / 12);
-			text(num, 0, 0);
-			popMatrix();
-			popMatrix();
-		}
-		popMatrix();
+		drawHoursHand(time);		
 	}
 
 	private void drawHoursHand(SimpleTime t) {
@@ -106,7 +65,7 @@ public class AnalogClock extends MyPApplet {
 	}
 
 	private void drawSecondsHand(SimpleTime t) {
-		float angle = t.s * 2 * PI / 60;
+		float angle = t.s * 2 * PI / 60f;
 		secondsHand.setAngle(angle);
 		secondsHand.draw();
 	}
