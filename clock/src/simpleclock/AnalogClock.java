@@ -9,13 +9,12 @@ public class AnalogClock extends MyPApplet {
 	// second hand moves 1/60th of the way around the clock each tick
 	public final float TICK_AMOUNT = 2 * PI / 60f;
 
-	// public float angleOfSecHand;
-	// public float angleOfMinHand;
-	// public float angleOfHourHand;
-
 	public ClockHand secondsHand;
 	public ClockHand minutesHand;
 	public ClockHand hoursHand;
+	
+	public Tick minuteTick;
+	public Tick hourTick;	
 
 	public PFont font;
 
@@ -30,6 +29,10 @@ public class AnalogClock extends MyPApplet {
 		minutesHand = new ClockHand(this, 110, 3, Color.BLUE, false);
 		hoursHand = new ClockHand(this, 80, 3, Color.GREEN, false);
 
+		// create the tick marks
+		minuteTick = new Tick(this, 5, 150, 1, Color.BLACK);
+		hourTick = new Tick(this, 10, 150, 3, Color.BLACK);
+		
 		// create the numbers font
 		font = createFont("Arial", 20);
 		textFont(font);
@@ -51,37 +54,30 @@ public class AnalogClock extends MyPApplet {
 		pushMatrix();
 		noFill();
 		stroke(128);
-		ellipse(0, 0, 300, 300);
+		strokeWeight(3);
+		circle(0, 0, 300);
 		fill(Color.BLACK);
-		ellipse(0, 0, 3, 3);
+		circle(0, 0, 3);
 
 		// ticks for seconds/minutes
-		strokeWeight(1);
 		for (int i = 0; i < 60; ++i) {
-			pushMatrix();
-			rotate(i * 2 * PI / 60);
-			line(0, -150, 0, -145);
-			popMatrix();
+			minuteTick.draw(i * 2 * PI / 60);
 		}
 
-		// ticks for hours
-		strokeWeight(3);
+		// ticks for hours		
 		for (int i = 0; i < 12; ++i) {
-			pushMatrix();
-			rotate(i * 2 * PI / 12);
-			line(0, -150, 0, -140);
-			popMatrix();
+			hourTick.draw(i * 2 * PI / 12);
 		}
 
 		// TODO: fix the position of the numbers
 		// When the commented-out rotation line below is uncommented,
 		// the orientation is okay, but position is off. Position each
 		// number by hand?
-		// numbers
+		// draw numbers
 		fill(Color.BLACK);
 		for (int i = 0; i < 12; ++i) {
 			pushMatrix();
-			rotate(i * 2 * PI / 12 + 2 * PI / 12);
+			rotate((i+1) * 2 * PI / 12);
 			String num = "" + (i + 1);
 			translate(-textWidth(num) / 2, -120);
 			pushMatrix();

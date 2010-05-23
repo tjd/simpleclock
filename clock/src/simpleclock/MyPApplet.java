@@ -17,4 +17,26 @@ public class MyPApplet extends PApplet {
 	public void fill(Color c) {
 		fill(c.getRed(), c.getGreen(), c.getBlue());
 	}
+
+	public void ellipse(float width, float height) {
+		ellipse(0, 0, width, height);
+	}
+
+	public void circle(float x, float y, float diam) {
+		ellipse(x, y, diam, diam);
+	}
+
+	public void circle(float diam) {
+		circle(0, 0, diam);
+	}
+	
+	public void pushAll() {
+		pushMatrix();
+		pushStyle();
+	}
+	
+	public void popAll() {
+		popStyle();
+		popMatrix();
+	}
 }

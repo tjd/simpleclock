@@ -23,18 +23,18 @@ public class ClockHand {
 	}
 
 	public void draw() {
-		app.pushMatrix();
-		app.pushStyle();
+		app.pushAll();
 		app.strokeWeight(weight);
 		app.stroke(color);
 		app.rotate(angle);
 		app.line(0, 0, 0, -length);
+		
+		// TODO: fix the arrow
 		if (hasArrow) {
 			app.triangle(-5, length, 5, length, 0, 10);
 			// triangle(-5, -height / 4, 5, -height / 4, 0, -height / 4 - 10);
 		}
-		app.popStyle();
-		app.popMatrix();
+		app.popAll();
 	}
 
 	public float getAngle() {
