@@ -35,7 +35,7 @@ public class AnalogClock extends MyPApplet {
 		// initialize the time
 		time = new SimpleTime(this);
 
-		// create the numbers font
+		// create and set the numbers font
 		font = createFont("Arial", 20);
 		textFont(font);
 	}
