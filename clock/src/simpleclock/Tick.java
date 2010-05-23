@@ -3,6 +3,7 @@ package simpleclock;
 import java.awt.Color;
 
 public class Tick {
+
 	private MyPApplet app;
 	private int length;
 	private int weight;
