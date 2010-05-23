@@ -10,6 +10,7 @@ public class ClockHand {
 	private int weight;
 	private Color color;
 	private boolean hasArrow;
+	private float angle;
 
 	public ClockHand(MyPApplet app, int length, int weight, Color color,
 			boolean hasArrow) {
@@ -18,18 +19,30 @@ public class ClockHand {
 		this.weight = weight;
 		this.color = color;
 		this.hasArrow = hasArrow;
+		this.angle = 0;
 	}
 
 	public void draw() {
+		app.pushMatrix();
 		app.pushStyle();
 		app.strokeWeight(weight);
 		app.stroke(color);
+		app.rotate(angle);
 		app.line(0, 0, 0, -length);
 		if (hasArrow) {
 			app.triangle(-5, length, 5, length, 0, 10);
 			// triangle(-5, -height / 4, 5, -height / 4, 0, -height / 4 - 10);
 		}
 		app.popStyle();
+		app.popMatrix();
+	}
+
+	public float getAngle() {
+		return angle;
+	}
+
+	public void setAngle(float angle) {
+		this.angle = angle;
 	}
 
 }

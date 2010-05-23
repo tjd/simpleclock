@@ -9,9 +9,9 @@ public class AnalogClock extends MyPApplet {
 	// second hand moves 1/60th of the way around the clock each tick
 	public final float TICK_AMOUNT = 2 * PI / 60f;
 
-	public float angleOfSecHand;
-	public float angleOfMinHand;
-	public float angleOfHourHand;
+	// public float angleOfSecHand;
+	// public float angleOfMinHand;
+	// public float angleOfHourHand;
 
 	public ClockHand secondsHand;
 	public ClockHand minutesHand;
@@ -25,15 +25,18 @@ public class AnalogClock extends MyPApplet {
 		fill(0, 0, 255);
 		smooth();
 
+		// create the hands
 		secondsHand = new ClockHand(this, 130, 1, Color.RED, false);
 		minutesHand = new ClockHand(this, 110, 3, Color.BLUE, false);
 		hoursHand = new ClockHand(this, 80, 3, Color.GREEN, false);
+
+		// create the numbers font
 		font = createFont("Arial", 20);
 		textFont(font);
 	}
 
 	public void draw() {
-		background(255);
+		background(Color.WHITE);
 
 		translate(width / 2, height / 2);
 
@@ -49,7 +52,7 @@ public class AnalogClock extends MyPApplet {
 		noFill();
 		stroke(128);
 		ellipse(0, 0, 300, 300);
-		fill(0);
+		fill(Color.BLACK);
 		ellipse(0, 0, 3, 3);
 
 		// ticks for seconds/minutes
@@ -75,7 +78,7 @@ public class AnalogClock extends MyPApplet {
 		// the orientation is okay, but position is off. Position each
 		// number by hand?
 		// numbers
-		fill(0);
+		fill(Color.BLACK);
 		for (int i = 0; i < 12; ++i) {
 			pushMatrix();
 			rotate(i * 2 * PI / 12 + 2 * PI / 12);
@@ -95,54 +98,21 @@ public class AnalogClock extends MyPApplet {
 		if (h >= 12) {
 			h -= 12;
 		}
-		angleOfHourHand = (2 * PI / 12) * (h + minute() / 60f);
-
-		pushMatrix();
-		fill(0, 255, 0);
-		stroke(0, 255, 0);
-		strokeWeight(3);
-
-		rotate(angleOfHourHand);
-
-		// draw the arrow
+		float angle = (2 * PI / 12) * (h + minute() / 60f);
+		hoursHand.setAngle(angle);
 		hoursHand.draw();
-//		line(0, -height / 6, 0, 30);
-//		triangle(-5, -height / 6, 5, -height / 6, 0, -height / 6 - 10);
-		popMatrix();
 	}
 
 	private void drawMinutesHand() {
-		angleOfMinHand = (2 * PI / 60f) * (minute() + second() / 60f);
-
-		pushMatrix();
-		fill(0, 0, 255);
-		stroke(0, 0, 255);
-		strokeWeight(3);
-
-		rotate(angleOfMinHand);
-
-		// draw the arrow
+		float angle = (2 * PI / 60f) * (minute() + second() / 60f);
+		minutesHand.setAngle(angle);
 		minutesHand.draw();
-//		line(0, -height / 4, 0, 40);
-//		triangle(-5, -height / 4, 5, -height / 4, 0, -height / 4 - 10);
-		popMatrix();
 	}
 
 	private void drawSecondsHand() {
-		angleOfSecHand = second() * 2 * PI / 60;
-
-		pushMatrix();
-		// fill(0, 0, 255);
-		stroke(255, 0, 0);
-		strokeWeight(1);
-
-		rotate(angleOfSecHand);
-
-		// draw the hand
+		float angle = second() * 2 * PI / 60;
+		secondsHand.setAngle(angle);
 		secondsHand.draw();
-//		line(0, -height / 3, 0, 10);
-		// triangle(-5, -height / 4, 5, -height / 4, 0, -height / 4 - 10);
-		popMatrix();
 	}
 
 }

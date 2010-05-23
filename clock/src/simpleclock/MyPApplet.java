@@ -10,4 +10,11 @@ public class MyPApplet extends PApplet {
 		stroke(c.getRed(), c.getGreen(), c.getBlue());
 	}
 
+	public void background(Color c) {
+		background(c.getRed(), c.getGreen(), c.getBlue());
+	}
+
+	public void fill(Color c) {
+		fill(c.getRed(), c.getGreen(), c.getBlue());
+	}
 }

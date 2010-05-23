@@ -27,12 +27,12 @@ public class SecondHand extends PApplet {
 		// Be careful: the order of the next two statement matters
 		translate(width / 2, height / 2);
 		rotate(angle); // rotations are in radians
-		
+
 		int s = second();
 		if (s != seconds) {
 			angle += TICK_AMOUNT;
 			seconds = s;
-		}		
+		}
 
 		// draw the arrow
 		line(0, -height / 4, 0, height / 4);
