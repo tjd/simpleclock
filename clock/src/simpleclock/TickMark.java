@@ -3,11 +3,11 @@ package simpleclock;
 import java.awt.Color;
 
 /*
- * A Tick is the small line segment around the edge of clock face.
+ * A TickMark is the small line segment around the edge of clock face.
  * 
  */
 
-public class Tick {
+public class TickMark {
 
 	private MyPApplet app;
 	private int length;
@@ -15,7 +15,7 @@ public class Tick {
 	private int height;
 	private Color color;
 
-	public Tick(MyPApplet app, int length, int height, int weight, Color color) {
+	public TickMark(MyPApplet app, int length, int height, int weight, Color color) {
 		this.app = app;
 		this.length = length;
 		this.weight = weight;
