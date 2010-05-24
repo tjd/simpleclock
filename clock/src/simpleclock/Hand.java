@@ -8,7 +8,7 @@ import java.awt.Color;
  * 
  */
 
-public class Hand extends Sprite {
+public class Hand extends Part {
 	private int length;
 	private int weight;
 	private boolean hasArrow;

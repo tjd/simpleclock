@@ -2,7 +2,7 @@ package simpleclock;
 
 import java.awt.Color;
 
-public class OuterRim extends Sprite {
+public class OuterRim extends Part {
 	private int diam;
 	private int weight;
 

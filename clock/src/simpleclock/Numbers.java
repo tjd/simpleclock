@@ -4,7 +4,7 @@ import java.awt.Color;
 
 import processing.core.PFont;
 
-public class Numbers extends Sprite {
+public class Numbers extends Part {
 
 	private PFont font;
 

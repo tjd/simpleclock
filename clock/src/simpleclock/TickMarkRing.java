@@ -2,7 +2,7 @@ package simpleclock;
 
 import java.awt.Color;
 
-public class TickMarkRing extends Sprite {
+public class TickMarkRing extends Part {
 	private int length;
 	private int height;
 	private int weight;

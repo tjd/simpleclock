@@ -2,7 +2,7 @@ package simpleclock;
 
 import java.awt.Color;
 
-public class CenterPeg extends Sprite {
+public class CenterPeg extends Part {
 
 	private int diam;
 

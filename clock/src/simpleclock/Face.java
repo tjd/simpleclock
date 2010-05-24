@@ -2,7 +2,7 @@ package simpleclock;
 
 import java.awt.Color;
 
-public class Face extends Sprite {
+public class Face extends Part {
 
 	private CenterPeg centerPeg;
 	private OuterRim outerRim;
