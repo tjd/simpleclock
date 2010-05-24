@@ -3,6 +3,7 @@ package simpleclock;
 import java.awt.Color;
 
 abstract public class Sprite extends Tester {
+	public static final float PI = MyPApplet.PI;
 	protected MyPApplet app;
 	protected Color color;
 	private boolean hidden;
