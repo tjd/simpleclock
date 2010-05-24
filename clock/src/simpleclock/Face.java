@@ -17,18 +17,20 @@ public class Face extends Sprite {
 		numbers = new Numbers(app, Color.BLACK);
 		minuteTickMarks = new TickMarkRing(app, Color.BLACK, 5, 150, 1, 60);
 		hourTickMarks = new TickMarkRing(app, Color.BLACK, 10, 150, 3, 12);
+
 	}
 
 	public void render() {
 		app.pushMatrix();
 
 		outerRim.draw();
+
 		minuteTickMarks.draw();
 		hourTickMarks.draw();
+
 		centerPeg.draw();
 		numbers.draw();
 
 		app.popMatrix();
 	}
-
 }
