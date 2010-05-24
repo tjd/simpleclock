@@ -11,7 +11,6 @@ import java.awt.Color;
 public class Hand extends Sprite {
 	private int length;
 	private int weight;
-	// private Color color;
 	private boolean hasArrow;
 	private float angle;
 

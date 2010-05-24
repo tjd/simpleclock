@@ -2,8 +2,6 @@ package simpleclock;
 
 import java.awt.Color;
 
-import processing.core.PFont;
-
 public class AnalogClock extends MyPApplet {
 
 	public Hand secondsHand;
@@ -12,8 +10,6 @@ public class AnalogClock extends MyPApplet {
 	public Face face;
 
 	public SimpleTime time;
-
-	public PFont font;
 
 	public void setup() {
 		size(400, 400);
@@ -32,10 +28,6 @@ public class AnalogClock extends MyPApplet {
 
 		// initialize the time
 		time = new SimpleTime(this);
-
-		// create and set the numbers font
-		font = createFont("Arial", 20);
-		textFont(font);
 	}
 
 	public void draw() {
@@ -44,10 +36,11 @@ public class AnalogClock extends MyPApplet {
 		translate(width / 2, height / 2);
 
 		time.updateToNow();
-		face.draw();
+
 		drawSecondsHand(time);
 		drawMinutesHand(time);
 		drawHoursHand(time);
+		face.draw();
 	}
 
 	private void drawHoursHand(SimpleTime t) {
