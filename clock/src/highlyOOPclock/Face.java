@@ -2,6 +2,8 @@ package highlyOOPclock;
 
 import java.awt.Color;
 
+import mypapplet.MyPApplet;
+
 public class Face extends Part {
 
 	private CenterPeg centerPeg;

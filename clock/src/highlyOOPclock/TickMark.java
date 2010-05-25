@@ -2,6 +2,8 @@ package highlyOOPclock;
 
 import java.awt.Color;
 
+import mypapplet.MyPApplet;
+
 /*
  * A TickMark is the small line segment around the edge of clock face.
  * 

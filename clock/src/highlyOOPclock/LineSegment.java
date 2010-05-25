@@ -2,6 +2,8 @@ package highlyOOPclock;
 
 import java.awt.Color;
 
+import mypapplet.MyPApplet;
+
 public class LineSegment extends Part {
 	protected int length;
 	protected int weight;

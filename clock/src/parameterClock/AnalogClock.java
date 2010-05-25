@@ -1,12 +1,38 @@
 package parameterClock;
 
-import processing.core.PApplet;
+import java.awt.Color;
+import mypapplet.MyPApplet;
 import processing.core.PFont;
 
-public class AnalogClock extends PApplet {
+public class AnalogClock extends MyPApplet {
 
-	// second hand moves 1/60th of the way around the clock each tick
-	public final float TICK_AMOUNT = 2 * PI / 60f;
+	private static final int SCREEN_HEIGHT = 400;
+	private static final int SCREEN_WIDTH = 400;
+	private static final Color BACKGROUND_COLOR = Color.WHITE;
+
+	private static final String NUMBER_FONT_NAME = "Arial";
+	private static final int NUMBER_FONT_SIZE = 20;
+	private static final Color NUMBER_COLOR = Color.BLACK;
+
+	private static final int HOUR_TICK_WEIGHT = 3;
+	private static final int MINUTE_TICK_WEIGHT = 1;
+
+	private static final Color CLOCK_EDGE_COLOR = Color.GRAY;
+
+	private static final Color CENTER_PEG_COLOR = Color.GRAY;
+	private static final int CENTER_PEG_WEIGHT = 3;
+
+	private static final Color HOUR_HAND_ARROW_COLOR = Color.GREEN;
+	private static final Color HOUR_HAND_COLOR = Color.GREEN;
+	private static final int HOUR_HAND_WEIGHT = 3;
+
+	private static final Color MINUTE_HAND_ARROW_COLOR = Color.BLUE;
+	private static final Color MINUTE_HAND_COLOR = Color.BLUE;
+	private static final int MINUTE_HAND_WEIGHT = 3;
+	
+	private static final Color SECOND_HAND_ARROW_COLOR = Color.RED;
+	private static final Color SECOND_HAND_COLOR = Color.RED;
+	private static final int SECOND_HAND_WEIGHT = 1;
 
 	public float angleOfSecHand;
 	public float angleOfMinHand;
@@ -15,17 +41,17 @@ public class AnalogClock extends PApplet {
 	public PFont font;
 
 	public void setup() {
-		size(400, 400);
+		size(SCREEN_WIDTH, SCREEN_HEIGHT);
 		stroke(0, 0, 255);
 		fill(0, 0, 255);
 		smooth();
 
-		font = createFont("Arial", 20);
+		font = createFont(NUMBER_FONT_NAME, NUMBER_FONT_SIZE);
 		textFont(font);
 	}
 
 	public void draw() {
-		background(255);
+		background(BACKGROUND_COLOR);
 
 		translate(width / 2, height / 2);
 
@@ -39,13 +65,15 @@ public class AnalogClock extends PApplet {
 	private void drawClockFace() {
 		pushMatrix();
 		noFill();
-		stroke(128);
-		ellipse(0, 0, 300, 300);
-		fill(0);
-		ellipse(0, 0, 3, 3);
+		stroke(CLOCK_EDGE_COLOR);
+		circle(300);
 
-		// ticks for seconds/minutes
-		strokeWeight(1);
+		// center peg
+		fill(CENTER_PEG_COLOR);
+		circle(CENTER_PEG_WEIGHT);
+
+		// ticks for minutes
+		strokeWeight(MINUTE_TICK_WEIGHT);
 		for (int i = 0; i < 60; ++i) {
 			pushMatrix();
 			rotate(i * 2 * PI / 60);
@@ -54,7 +82,7 @@ public class AnalogClock extends PApplet {
 		}
 
 		// ticks for hours
-		strokeWeight(3);
+		strokeWeight(HOUR_TICK_WEIGHT);
 		for (int i = 0; i < 12; ++i) {
 			pushMatrix();
 			rotate(i * 2 * PI / 12);
@@ -67,7 +95,7 @@ public class AnalogClock extends PApplet {
 		// the orientation is okay, but position is off. Position each
 		// number by hand?
 		// numbers
-		fill(0);
+		fill(NUMBER_COLOR);
 		for (int i = 0; i < 12; ++i) {
 			pushMatrix();
 			rotate(i * 2 * PI / 12 + 2 * PI / 12);
@@ -90,9 +118,9 @@ public class AnalogClock extends PApplet {
 		angleOfHourHand = (2 * PI / 12) * (h + minute() / 60f);
 
 		pushMatrix();
-		fill(0, 255, 0);
-		stroke(0, 255, 0);
-		strokeWeight(3);
+		fill(HOUR_HAND_ARROW_COLOR);
+		stroke(HOUR_HAND_COLOR);
+		strokeWeight(HOUR_HAND_WEIGHT);
 
 		rotate(angleOfHourHand);
 
@@ -106,9 +134,9 @@ public class AnalogClock extends PApplet {
 		angleOfMinHand = (2 * PI / 60f) * (minute() + second() / 60f);
 
 		pushMatrix();
-		fill(0, 0, 255);
-		stroke(0, 0, 255);
-		strokeWeight(3);
+		fill(MINUTE_HAND_ARROW_COLOR);
+		stroke(MINUTE_HAND_COLOR);
+		strokeWeight(MINUTE_HAND_WEIGHT);
 
 		rotate(angleOfMinHand);
 
@@ -122,9 +150,9 @@ public class AnalogClock extends PApplet {
 		angleOfSecHand = second() * 2 * PI / 60;
 
 		pushMatrix();
-		// fill(0, 0, 255);
-		stroke(255, 0, 0);
-		strokeWeight(1);
+		fill(SECOND_HAND_ARROW_COLOR);
+		stroke(SECOND_HAND_COLOR);
+		strokeWeight(SECOND_HAND_WEIGHT);
 
 		rotate(angleOfSecHand);
 

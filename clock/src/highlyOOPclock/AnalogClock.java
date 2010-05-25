@@ -2,6 +2,8 @@ package highlyOOPclock;
 
 import java.awt.Color;
 
+import mypapplet.MyPApplet;
+
 public class AnalogClock extends MyPApplet {
 
 	public Hand secondsHand;

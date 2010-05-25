@@ -1,4 +1,4 @@
-package highlyOOPclock;
+package mypapplet;
 
 import java.awt.Color;
 import processing.core.PApplet;

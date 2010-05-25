@@ -2,6 +2,8 @@ package highlyOOPclock;
 
 import java.awt.Color;
 
+import mypapplet.MyPApplet;
+
 /*
  * Represents one hand of a clock. Optionally, an arrow can be drawn on
  * the end of the hand.

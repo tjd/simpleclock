@@ -2,6 +2,8 @@ package highlyOOPclock;
 
 import java.awt.Color;
 
+import mypapplet.MyPApplet;
+
 public class TickMarkRing extends Part {
 	private int length;
 	private int height;
