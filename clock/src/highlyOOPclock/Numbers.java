@@ -1,4 +1,4 @@
-package simpleclock;
+package highlyOOPclock;
 
 import java.awt.Color;
 

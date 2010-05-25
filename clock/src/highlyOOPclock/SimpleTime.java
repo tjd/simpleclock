@@ -1,4 +1,4 @@
-package simpleclock;
+package highlyOOPclock;
 
 /*
  * Represents time as a (seconds, minutes, hours) triple.
