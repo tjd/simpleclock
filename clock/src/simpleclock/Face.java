@@ -21,7 +21,7 @@ public class Face extends Part {
 	}
 
 	public void render() {
-		app.pushMatrix();
+//		app.pushMatrix();
 
 		outerRim.draw();
 
@@ -31,6 +31,6 @@ public class Face extends Part {
 		centerPeg.draw();
 		numbers.draw();
 
-		app.popMatrix();
+//		app.popMatrix();
 	}
 }

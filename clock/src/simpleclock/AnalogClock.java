@@ -18,9 +18,9 @@ public class AnalogClock extends MyPApplet {
 		smooth();
 
 		// create the hands
-		secondsHand = new Hand(this, 130, 1, Color.RED, false);
-		minutesHand = new Hand(this, 110, 3, Color.BLUE, false);
-		hoursHand = new Hand(this, 80, 3, Color.GREEN, false);
+		secondsHand = new Hand(this, -130, 1, Color.RED, false);
+		minutesHand = new Hand(this, -110, 3, Color.BLUE, false);
+		hoursHand = new Hand(this, -80, 3, Color.GREEN, false);
 
 		face = new Face(this);
 		// face.hideNumbers();

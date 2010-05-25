@@ -20,7 +20,7 @@ public class Numbers extends Part {
 		// the orientation is okay, but position is off. Position each
 		// number by hand?
 		// draw numbers
-		app.pushAll();
+//		app.pushAll();
 		app.fill(color);
 		for (int i = 0; i < 12; ++i) {
 			app.pushMatrix();
@@ -33,7 +33,7 @@ public class Numbers extends Part {
 			app.popMatrix();
 			app.popMatrix();
 		}
-		app.popAll();
+//		app.popAll();
 	}
 
 }
