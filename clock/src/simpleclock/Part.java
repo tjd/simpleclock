@@ -28,7 +28,9 @@ abstract public class Part extends Tester {
 
 	final public void draw() {
 		if (!isHidden()) {
+			app.pushAll();
 			render();
+			app.popAll();
 		}
 	}
 

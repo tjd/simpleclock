@@ -8,29 +8,30 @@ import java.awt.Color;
  * 
  */
 
-public class Hand extends Part {
-	private int length;
-	private int weight;
+public class Hand extends LineSegment {
+//	private int length;
+//	private int weight;
 	private boolean hasArrow;
-	private float angle;
+//	private float angle;
 
 	// private boolean hidden;
 
 	public Hand(MyPApplet app, int length, int weight, Color color,
 			boolean hasArrow) {
-		super(app, color);
-		this.length = length;
-		this.weight = weight;
+		super(app, length, 0, weight, color);
+//		this.length = length;
+//		this.weight = weight;
 		this.hasArrow = hasArrow;
-		this.angle = 0;
+//		this.angle = 0;
 	}
 
 	public void render() {
-		app.pushAll();
-		app.strokeWeight(weight);
-		app.stroke(color);
-		app.rotate(angle);
-		app.line(0, 0, 0, -length);
+		super.render();
+//		app.pushAll();
+//		app.strokeWeight(weight);
+//		app.stroke(color);
+//		app.rotate(angle);
+//		app.line(0, 0, 0, -length);
 
 		// TODO: fix the arrow
 		if (hasArrow) {
@@ -38,11 +39,11 @@ public class Hand extends Part {
 			// triangle(-5, -height / 4, 5, -height / 4, 0, -height / 4 -
 			// 10);
 		}
-		app.popAll();
+//		app.popAll();
 	}
-
-	public void setAngle(float angle) {
-		this.angle = angle;
-	}
+//
+//	public void setAngle(float angle) {
+//		this.angle = angle;
+//	}
 
 }
