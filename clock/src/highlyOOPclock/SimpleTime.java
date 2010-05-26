@@ -1,6 +1,6 @@
 package highlyOOPclock;
 
-import mypapplet.MyPApplet;
+import util.MyPApplet;
 
 /*
  * Represents time as a (seconds, minutes, hours) triple.

@@ -2,7 +2,7 @@ package highlyOOPclock;
 
 import java.awt.Color;
 
-import mypapplet.MyPApplet;
+import util.MyPApplet;
 
 public class Face extends Part {
 
@@ -23,7 +23,7 @@ public class Face extends Part {
 	}
 
 	public void render() {
-//		app.pushMatrix();
+		// app.pushMatrix();
 
 		outerRim.draw();
 
@@ -33,6 +33,6 @@ public class Face extends Part {
 		centerPeg.draw();
 		numbers.draw();
 
-//		app.popMatrix();
+		// app.popMatrix();
 	}
 }

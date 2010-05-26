@@ -2,7 +2,8 @@ package highlyOOPclock;
 
 import java.awt.Color;
 
-import mypapplet.MyPApplet;
+import util.MyPApplet;
+import util.Tester;
 
 abstract public class Part extends Tester {
 	public static final float PI = MyPApplet.PI;

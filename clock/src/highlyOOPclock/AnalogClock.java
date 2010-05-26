@@ -2,7 +2,7 @@ package highlyOOPclock;
 
 import java.awt.Color;
 
-import mypapplet.MyPApplet;
+import util.MyPApplet;
 
 public class AnalogClock extends MyPApplet {
 

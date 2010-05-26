@@ -1,4 +1,4 @@
-package highlyOOPclock;
+package util;
 
 import java.util.Arrays;
 import java.util.Random;
@@ -51,12 +51,16 @@ public class Tester {
 		assertEqual(x, y, "");
 	}
 
-	public void assertNotNull(Object x) {
-		assertFalse(x == null);
+	public void assertNotNull(Object... args) {
+		for (Object x : args) {
+			assertFalse(x == null);
+		}
 	}
 
-	public void assertNull(Object x) {
-		assertTrue(x == null);
+	public void assertNull(Object... args) {
+		for (Object x : args) {
+			assertTrue(x == null);
+		}
 	}
 
 	// fail on purpose

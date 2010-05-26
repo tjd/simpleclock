@@ -2,7 +2,7 @@ package highlyOOPclock;
 
 import java.awt.Color;
 
-import mypapplet.MyPApplet;
+import util.MyPApplet;
 
 public class LineSegment extends Part {
 	protected int length;
@@ -15,7 +15,7 @@ public class LineSegment extends Part {
 		super(app, color);
 		this.length = length;
 		this.height = height;
-		this.weight = weight;		
+		this.weight = weight;
 		this.angle = 0;
 	}
 
@@ -24,12 +24,12 @@ public class LineSegment extends Part {
 	}
 
 	protected void render() {
-//		app.pushAll();
+		// app.pushAll();
 		app.strokeWeight(weight);
 		app.stroke(color);
 		app.rotate(angle);
 		app.line(0, -height + length, 0, -height);
-//		app.popAll();
+		// app.popAll();
 	}
 
 	public void draw(float angle) {

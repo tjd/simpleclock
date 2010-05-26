@@ -2,7 +2,7 @@ package highlyOOPclock;
 
 import java.awt.Color;
 
-import mypapplet.MyPApplet;
+import util.MyPApplet;
 
 /*
  * Represents one hand of a clock. Optionally, an arrow can be drawn on
@@ -11,29 +11,30 @@ import mypapplet.MyPApplet;
  */
 
 public class Hand extends LineSegment {
-//	private int length;
-//	private int weight;
+	// private int length;
+	// private int weight;
 	private boolean hasArrow;
-//	private float angle;
+
+	// private float angle;
 
 	// private boolean hidden;
 
 	public Hand(MyPApplet app, int length, int weight, Color color,
 			boolean hasArrow) {
 		super(app, length, 0, weight, color);
-//		this.length = length;
-//		this.weight = weight;
+		// this.length = length;
+		// this.weight = weight;
 		this.hasArrow = hasArrow;
-//		this.angle = 0;
+		// this.angle = 0;
 	}
 
 	public void render() {
 		super.render();
-//		app.pushAll();
-//		app.strokeWeight(weight);
-//		app.stroke(color);
-//		app.rotate(angle);
-//		app.line(0, 0, 0, -length);
+		// app.pushAll();
+		// app.strokeWeight(weight);
+		// app.stroke(color);
+		// app.rotate(angle);
+		// app.line(0, 0, 0, -length);
 
 		// TODO: fix the arrow
 		if (hasArrow) {
@@ -41,11 +42,11 @@ public class Hand extends LineSegment {
 			// triangle(-5, -height / 4, 5, -height / 4, 0, -height / 4 -
 			// 10);
 		}
-//		app.popAll();
+		// app.popAll();
 	}
-//
-//	public void setAngle(float angle) {
-//		this.angle = angle;
-//	}
+	//
+	// public void setAngle(float angle) {
+	// this.angle = angle;
+	// }
 
 }

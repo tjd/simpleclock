@@ -1,6 +1,7 @@
-package mypapplet;
+package util;
 
 import java.awt.Color;
+
 import processing.core.PApplet;
 
 /*

@@ -1,26 +1,72 @@
 package parameterClock;
 
 import java.awt.Color;
-import mypapplet.MyPApplet;
 import processing.core.PFont;
+import util.MyPApplet;
 
 public class AnalogClock extends MyPApplet {
 
 	private static final int SCREEN_HEIGHT = 400;
 	private static final int SCREEN_WIDTH = 400;
+	private static final int X = SCREEN_WIDTH / 2;
+	private static final int Y = SCREEN_HEIGHT / 2;
 	private static final Color BACKGROUND_COLOR = Color.WHITE;
 
 	private static final String NUMBER_FONT_NAME = "Arial";
 	private static final int NUMBER_FONT_SIZE = 20;
 	private static final Color NUMBER_COLOR = Color.BLACK;
 
-	private static final int HOUR_TICK_WEIGHT = 3;
-	private static final int MINUTE_TICK_WEIGHT = 1;
+	// private static final int HOUR_TICK_WEIGHT = 3;
+	// private static final int MINUTE_TICK_WEIGHT = 1;
 
-	private static final Color CLOCK_EDGE_COLOR = Color.GRAY;
+	// private static final Color CLOCK_EDGE_COLOR = Color.GRAY;
 
-	private static final Color CENTER_PEG_COLOR = Color.GRAY;
-	private static final int CENTER_PEG_WEIGHT = 3;
+	// outer rim is centered at (0, 0)
+	Part outerRim = new Part(this, Color.GRAY, 3) {
+		int diam = 300;
+
+		public void render() {
+			noFill();
+			circle(diam);
+		}
+	};
+
+	// minute ticks centered at (0, 0)
+	Part minuteTicks = new Part(this, Color.GRAY, 1) {
+		public void render() {
+			for (int i = 0; i < 60; ++i) {
+				pushMatrix();
+				rotate(i * 2 * PI / 60);
+				line(0, -150, 0, -145);
+				popMatrix();
+			}
+		}
+	};
+
+	// hour ticks centered at (0, 0)
+	Part hourTicks = new Part(this, Color.GRAY, 3) {
+		public void render() {
+			for (int i = 0; i < 12; ++i) {
+				pushMatrix();
+				rotate(i * 2 * PI / 12);
+				line(0, -150, 0, -140);
+				popMatrix();
+			}
+		}
+	};
+	
+
+	// center peg is centered at (0, 0)
+	Part centerPeg = new Part(this, Color.GRAY, 1) {
+		int diam = 3;
+
+		public void render() {
+			circle(diam);
+		}
+	};
+
+	// private static final Color CENTER_PEG_COLOR = Color.GRAY;
+	// private static final int CENTER_PEG_WEIGHT = 3;
 
 	private static final Color HOUR_HAND_ARROW_COLOR = Color.GREEN;
 	private static final Color HOUR_HAND_COLOR = Color.GREEN;
@@ -29,7 +75,7 @@ public class AnalogClock extends MyPApplet {
 	private static final Color MINUTE_HAND_ARROW_COLOR = Color.BLUE;
 	private static final Color MINUTE_HAND_COLOR = Color.BLUE;
 	private static final int MINUTE_HAND_WEIGHT = 3;
-	
+
 	private static final Color SECOND_HAND_ARROW_COLOR = Color.RED;
 	private static final Color SECOND_HAND_COLOR = Color.RED;
 	private static final int SECOND_HAND_WEIGHT = 1;
@@ -53,7 +99,7 @@ public class AnalogClock extends MyPApplet {
 	public void draw() {
 		background(BACKGROUND_COLOR);
 
-		translate(width / 2, height / 2);
+		translate(X, Y);
 
 		drawSecondsHand();
 		drawMinutesHand();
@@ -64,31 +110,14 @@ public class AnalogClock extends MyPApplet {
 
 	private void drawClockFace() {
 		pushMatrix();
-		noFill();
-		stroke(CLOCK_EDGE_COLOR);
-		circle(300);
-
-		// center peg
-		fill(CENTER_PEG_COLOR);
-		circle(CENTER_PEG_WEIGHT);
+		outerRim.draw();
+		centerPeg.draw();
 
 		// ticks for minutes
-		strokeWeight(MINUTE_TICK_WEIGHT);
-		for (int i = 0; i < 60; ++i) {
-			pushMatrix();
-			rotate(i * 2 * PI / 60);
-			line(0, -150, 0, -145);
-			popMatrix();
-		}
+		minuteTicks.draw();
 
 		// ticks for hours
-		strokeWeight(HOUR_TICK_WEIGHT);
-		for (int i = 0; i < 12; ++i) {
-			pushMatrix();
-			rotate(i * 2 * PI / 12);
-			line(0, -150, 0, -140);
-			popMatrix();
-		}
+		hourTicks.draw();
 
 		// TODO: fix the position of the numbers
 		// When the commented-out rotation line below is uncommented,
