@@ -22,17 +22,17 @@ public class AnalogClock extends MyPApplet {
 	// private static final Color CLOCK_EDGE_COLOR = Color.GRAY;
 
 	// outer rim is centered at (0, 0)
-	Part outerRim = new Part(this, Color.GRAY, 3) {
+	WeightedPart outerRim = new WeightedPart(this, Color.GRAY, 3) {
 		int diam = 300;
 
 		public void render() {
-			noFill();
+			app.noFill();
 			circle(diam);
 		}
 	};
 
 	// minute ticks centered at (0, 0)
-	Part minuteTicks = new Part(this, Color.GRAY, 1) {
+	WeightedPart minuteTicks = new WeightedPart(this, Color.GRAY, 1) {
 		public void render() {
 			for (int i = 0; i < 60; ++i) {
 				pushMatrix();
@@ -44,7 +44,7 @@ public class AnalogClock extends MyPApplet {
 	};
 
 	// hour ticks centered at (0, 0)
-	Part hourTicks = new Part(this, Color.GRAY, 3) {
+	WeightedPart hourTicks = new WeightedPart(this, Color.GRAY, 3) {
 		public void render() {
 			for (int i = 0; i < 12; ++i) {
 				pushMatrix();
@@ -54,10 +54,27 @@ public class AnalogClock extends MyPApplet {
 			}
 		}
 	};
-	
+
+	// numbers centered at (0, 0)
+	BasicPart numbers = new BasicPart(this) {
+		public void render() {
+			app.fill(Color.BLACK);
+			for (int i = 0; i < 12; ++i) {
+				pushMatrix();
+				rotate(i * 2 * PI / 12 + 2 * PI / 12);
+				String num = "" + (i + 1);
+				translate(-textWidth(num) / 2, -120);
+				pushMatrix();
+				// rotate(-i * 2 * PI / 12 - 2 * PI / 12);
+				text(num, 0, 0);
+				popMatrix();
+				popMatrix();
+			}
+		}
+	};
 
 	// center peg is centered at (0, 0)
-	Part centerPeg = new Part(this, Color.GRAY, 1) {
+	WeightedPart centerPeg = new WeightedPart(this, Color.GRAY, 1) {
 		int diam = 3;
 
 		public void render() {
@@ -110,32 +127,18 @@ public class AnalogClock extends MyPApplet {
 
 	private void drawClockFace() {
 		pushMatrix();
+		
 		outerRim.draw();
 		centerPeg.draw();
-
-		// ticks for minutes
 		minuteTicks.draw();
-
-		// ticks for hours
 		hourTicks.draw();
 
 		// TODO: fix the position of the numbers
 		// When the commented-out rotation line below is uncommented,
 		// the orientation is okay, but position is off. Position each
 		// number by hand?
-		// numbers
-		fill(NUMBER_COLOR);
-		for (int i = 0; i < 12; ++i) {
-			pushMatrix();
-			rotate(i * 2 * PI / 12 + 2 * PI / 12);
-			String num = "" + (i + 1);
-			translate(-textWidth(num) / 2, -120);
-			pushMatrix();
-			// rotate(-i * 2 * PI / 12 - 2 * PI / 12);
-			text(num, 0, 0);
-			popMatrix();
-			popMatrix();
-		}
+		numbers.draw();
+
 		popMatrix();
 	}
 
