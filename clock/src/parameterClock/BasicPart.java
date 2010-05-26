@@ -8,7 +8,7 @@ import util.Tester;
 public abstract class BasicPart extends Tester {
 
 	protected MyPApplet app;
-	protected Color color;
+	protected Color lineColor;
 	protected boolean hidden;
 
 	public BasicPart(MyPApplet app) {
@@ -22,14 +22,14 @@ public abstract class BasicPart extends Tester {
 	public BasicPart(MyPApplet app, Color color, boolean hidden) {
 		assertNotNull(app, color);
 		this.app = app;
-		this.color = color;
+		this.lineColor = color;
 		this.hidden = hidden;
 	}
 
-	public final void draw() {
+	public void draw() {
 		if (!hidden) {
 			app.pushAll();
-			app.stroke(color);
+			app.stroke(lineColor);
 			render();
 			app.popAll();
 		}

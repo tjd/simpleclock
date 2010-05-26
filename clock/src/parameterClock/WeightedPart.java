@@ -16,4 +16,13 @@ abstract public class WeightedPart extends BasicPart {
 		this(app, color, weight, false);
 	}
 
+	public void draw() {
+		if (!hidden) {
+			app.pushAll();
+			app.stroke(lineColor);
+			app.strokeWeight(weight);
+			render();
+			app.popAll();
+		}
+	}
 }
